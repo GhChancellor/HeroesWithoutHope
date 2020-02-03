@@ -1,0 +1,38 @@
+per favore gli i gli attributi degli enum in maiuscolo e nomeClasseENUM BodyLocationENUM
+
+
+correggi da IAttribute a IFeatAttribute nel core
+
+class TargetFeat {
+        getArea: AreaFeat
+        getDistance(): DistanceFeat
+        getNumberOfTarget(): int
+
+        setArea(value: AreaFeat): void        
+        setDistance(value: DistanceFeat): void
+        setNumberOfTarget(value: int): void
+}
+
+secondo me sarebbe meglio cosi
+
+class TargetFeat {
+        getAreaFeat: AreaFeat <<<<<
+        getDistanceFeat(): DistanceFeat <<<<<
+        getNumberOfTarget(): int
+
+        setAreaFeat(value: AreaFeat): void      <<<<<<  
+        setDistanceFeat(value: DistanceFeat): void <<<<<
+        setNumberOfTarget(value: int): void
+}
+
+nello schema a blocchi
+class DistanceFeat  {
+        getDistanceMultiplier(): int
+        getDistanceType(): DistanceType  <<< aggiungici DistanceTypeENUN è forviante
+        getDistanceValue(): int
+
+
+IMPORTANTE!!!!
+classe BodyLocationFeat, non sono sicuro che la Interface la vuoi cosi, fatta cosi ogni volta che inseriamo interface c'è da riscivere il codice tutte le volte
+non è meglio creare un classe normale e poi estenderla o inizializzarla al interno della classe che ne ha bisogno?
+al interno BodyLocationFeat c'è un esempio di come verrebbe. secondo me è inefficiente visto che sarà usata N volte da N classi

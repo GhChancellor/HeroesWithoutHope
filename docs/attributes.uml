@@ -1,0 +1,179 @@
+@startuml
+
+interface IFeatAttribute {
+        getDescription(): String
+        getMagnitude(): int
+        getName(): String
+}
+
+enum BodyLocation {
+        Head,
+        Body,
+        LeftArm,
+        RightArm,
+        LeftLeg,
+        RightLeg
+}
+class BodyLocationFeat {
+        getBodyLocation(): BodyLocation
+        setBodyLocation(value: BodyLocation): void
+}
+BodyLocationFeat --> BodyLocation
+BodyLocationFeat --|> IFeatAttribute
+
+enum Duration {
+        Momentary,
+        Limited,
+        Extended,
+        Unlimited
+}
+class DurationFeat {
+        getDuration(): Duration
+        setDuration(value: Duration)
+}
+DurationFeat --> Duration
+DurationFeat --|> IFeatAttribute
+
+class TargetFeat {
+        getArea: AreaFeat
+        getDistance(): DistanceFeat
+        getNumberOfTarget(): int
+
+        setArea(value: AreaFeat): void        
+        setDistance(value: DistanceFeat): void
+        setNumberOfTarget(value: int): void
+}
+TargetFeat --|> IFeatAttribute
+TargetFeat *-- "1" DistanceFeat
+TargetFeat *-- "0..1" AreaFeat
+
+enum DistanceType {
+        Defined
+        Contact
+        Sensory
+        Limitless
+}
+class DistanceFeat  {
+        getDistanceMultiplier(): int
+        getDistanceType(): DistanceType
+        getDistanceValue(): int
+        
+        setDistanceMultiplier(value: int): void
+        setDistanceType(value: DistanceType): void
+        setDistanceValue(value: int): void
+}
+DistanceFeat --|> IFeatAttribute
+DistanceFeat --> DistanceType
+
+enum AreaType {
+        Defined
+        Sensory
+}
+class AreaFeat {
+        getAreaMultiplier(): int
+        getAreaType(): AreaType
+        getExcludedTarget(): int
+
+        setAreaMultiplier(value: int): void
+        setAreaType(value: AreaType): void
+        setExcludedTarget(value: int): void
+}
+AreaFeat --|> IFeatAttribute
+AreaFeat --> AreaType
+
+
+class BonusFeat {
+        + getValue(): int
+        + setValue(value: int): void
+}
+BonusFeat --|> IFeatAttribute
+
+enum CharacterFeat {
+        Quickness
+        Magic
+        Intellect
+        Psyche
+        Agility
+        Force
+}
+enum CharacterAbility {
+        Range
+        Perception
+        Relationship
+        Contacts
+        Culture
+        Science
+        Dexterity
+        Physicality
+        Melee
+}
+class SuccessBonusFeat {
+        + getCharacterFeat(): CharacterFeat
+        + setCharacterFeat(): void
+}
+SuccessBonusFeat --> CharacterFeat
+SuccessBonusFeat -|> BonusFeat
+
+class PotentialBonusFeat {
+        + getCharacterAbility(): CharacterAbility
+        + setCharacterAbility(): void
+}
+PotentialBonusFeat --> CharacterAbility
+PotentialBonusFeat -|> BonusFeat
+
+enum CombatType {
+        None
+        Confrontation
+        Defensive
+        Offensive
+}
+class CombatFeat {
+        + getCombatType(): CombatType
+        + setCombatType(value: CombatType): void 
+}
+CombatFeat --|> IFeatAttribute
+CombatFeat --> CombatType
+
+enum InfluenceType {
+        None
+        Mystical
+        Psychic
+}
+enum DamageType {
+        Base
+        Debilitating
+        Incapacitating
+        Stun
+        Extended
+        Persistent
+        Flurry
+}
+class AttackFeat {
+        + getDamageTypes(): List<DamageType>
+        + getInfluenceType(): InfluenceType
+
+        + setDamageTypes(damageTypes: List<DamageType>)
+        + setInfluenceType(value: InfluenceType)
+}
+AttackFeat --|> IFeatAttribute
+AttackFeat --> InfluenceType
+AttackFeat --> DamageType
+
+class MovementFeat {
+        + getFollow(): boolean
+        + getMultiplier(): int
+        + getValue(): int
+        
+        + setFollow(value: boolean)
+        + setMultiplier(value: int)
+        + setValue(value: int)
+}
+MovementFeat --|> IFeatAttribute
+
+class EditorFeat {
+        + getValue(): int
+        + setValue(value: int)
+}
+EditorFeat --|> IFeatAttribute
+
+@enduml

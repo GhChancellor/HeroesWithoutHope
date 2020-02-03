@@ -1,0 +1,44 @@
+# This is the news file used to notify important changes of each
+# relase.
+# Each entry must be separated by an empty line and contains an header
+# followed by a list of changes
+#
+# Header must be formatted as follow:
+# ========================
+# YYYY-MM-DD Version M.m.l
+# ========================
+#
+# Where:
+#  YYYY: Year with 4 digit.
+#  MM  : Month in two digit.
+#  DD  : Day in two digit.
+#  M   : Major number version.
+#  m   : Middle number version.
+#  l   : Low number version
+#
+# 
+# List of changes must be in the following form:
+#  - [TYPE] DESC
+#
+# Where:
+#  TYPE: Type must be one of:
+#          * new: If the change add something
+#          * chn: If the change refers to a change of an existing
+#                 element
+#          * rmv: If the change refers to the removal of an existing
+#                 element
+#          * fix: If the change refers to a fix of an existing element
+#  DESC: One line description of the change.
+# The whole line must be maximum 70 columns length.
+# Changes must be grouped by type and ordered as follow: new, chn, fix
+# and fix.
+#
+# Example:
+#
+# ========================
+# 1946-06-02 Version 1.0.0
+# ========================
+#  - [new] republic
+#  - [chn] constitution
+#  - [rmv] monarchy
+#  - [fix] vote rights

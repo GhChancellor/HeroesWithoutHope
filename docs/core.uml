@@ -1,0 +1,34 @@
+@startuml
+
+class HeroicAbility {
+        + getDescription(): String
+        + getId(): String
+        + getName(): String
+
+        + setDescription(value: String): void
+        + setId(value: String): void
+        + setName(value: String): void
+}
+
+class HeroicFeat {
+        + getDescription(): String
+        + getId(): String
+        + getMagnitude(): int
+        + getName(): String
+        + getAttrbutes(): List<IAttribute>
+        
+        + setDescription(value: String): void
+        + setId(value: String): void
+        + setName(value: String): void
+}
+
+interface IFeatAttribute {
+        getDescription(): String
+        getMagnitude(): int
+        getName(): String
+}
+
+HeroicAbility *-- "*" HeroicFeat
+HeroicFeat *-- "*" IFeatAttribute
+
+@enduml

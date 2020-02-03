@@ -16,12 +16,12 @@ class TargetFeat {
 secondo me sarebbe meglio cosi
 
 class TargetFeat {
-        getAreaFeat: AreaFeat <<<<<
-        getDistanceFeat(): DistanceFeat <<<<<
+        getAreaFeat: AreaFeatENUM <<<<<
+        getDistanceFeat(): DistanceFeatENUM <<<<<
         getNumberOfTarget(): int
 
-        setAreaFeat(value: AreaFeat): void      <<<<<<  
-        setDistanceFeat(value: DistanceFeat): void <<<<<
+        setAreaFeat(value: AreaFeatENUM): void      <<<<<<  
+        setDistanceFeat(value: DistanceFeatENUM): void <<<<<
         setNumberOfTarget(value: int): void
 }
 

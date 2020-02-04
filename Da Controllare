@@ -1,7 +1,3 @@
-per favore gli i gli attributi degli enum in maiuscolo e nomeClasseENUM BodyLocationENUM
-
-
-correggi da IAttribute a IFeatAttribute nel core
 
 class TargetFeat {
         getArea: AreaFeat
@@ -24,15 +20,45 @@ class TargetFeat {
         setDistanceFeat(value: DistanceFeatENUM): void <<<<<
         setNumberOfTarget(value: int): void
 }
+Il bersaglio puo' essere singolo o all'interno di un'area. Ognuno dei
+due casi ha un calcolo della magnitudo diversa, quindi serve un
+oggetto AreaFeat che ha la sua configurazione e il suo calcolo, da
+abbinare a un oggetto TargetFeat che a sua volta ha il suo calcolo
+(dipendente dalla presenza o meno di un'area di azione).
 
-nello schema a blocchi
-class DistanceFeat  {
-        getDistanceMultiplier(): int
-        getDistanceType(): DistanceType  <<< aggiungici DistanceTypeENUN è forviante
-        getDistanceValue(): int
 
 
 IMPORTANTE!!!!
 classe BodyLocationFeat, non sono sicuro che la Interface la vuoi cosi, fatta cosi ogni volta che inseriamo interface c'è da riscivere il codice tutte le volte
 non è meglio creare un classe normale e poi estenderla o inizializzarla al interno della classe che ne ha bisogno?
 al interno BodyLocationFeat c'è un esempio di come verrebbe. secondo me è inefficiente visto che sarà usata N volte da N classi
+
+ >> Ogni classe Feat ha un suo modo di calcolare la magnitudo e la
+    descrizione, quindi in ogni caso quel metodo va implementato per
+    ogni classe in maniera diversa. Il problema della "ripetizione" lo
+    avremmo in ogni caso.
+
+ Ogni classe IFeatAttribute avra' una metodologia di interazione
+ diversa, che varia a seconda di cosa questo rappresenta: la scelta
+ della locazione avviene in una maniera, la definizione dei bersagli
+ tramite selezione singola, multipla o area avviene in un'altra. La
+ numerosita' delle classi e' dovuta al fatto che ci sono tanti fattori
+ che influenzano il calcolo della magnitudo e la struttura comune e'
+ data dall'interfaccia. Alla fine di tutto il processo dobbiamo in
+ ottenere un gesto con le sue caratteristiche. L'output finale deve
+ essere una cosa di questo tipo:
+
+   Nome: "Proiettili di fuoco"
+   Distanza: "10m"
+   Bersagli: 1
+   Locazione: "Mani"
+   etc ...
+
+   MAGNITUDE: 10 (==> somma di tutte le magintudo) 
+
+ Questo schema e' riproducibile se ogni IAttributeFeat stampa la cosa
+ giusta. Se avessimo una classe base che restituisce lo stesso valore
+ per ogni oggetto, non potremmo stampare "Mani" in BodyLocationFeat
+ quando vengono selezionate le braccia. Stessa cosa per DistanceFeat
+ che produrra "10m" nel momento in cui si applica il tipo di distanza
+ (DEFINED), il valore 1 e il moltiplicatore 10.

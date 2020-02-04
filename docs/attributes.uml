@@ -1,3 +1,4 @@
+
 @startuml
 
 interface IFeatAttribute {
@@ -6,32 +7,33 @@ interface IFeatAttribute {
         getName(): String
 }
 
-enum BodyLocation {
-        Head,
-        Body,
-        LeftArm,
-        RightArm,
-        LeftLeg,
-        RightLeg
+enum BodyLocationENUM {
+        NONE
+        HEAD
+        BODY
+        LEFT_ARM
+        RIGHT_ARM
+        LEFT_LEG
+        RIGHT_LEG
 }
 class BodyLocationFeat {
-        getBodyLocation(): BodyLocation
-        setBodyLocation(value: BodyLocation): void
+        getBodyLocation(): BodyLocationENUM
+        setBodyLocation(value: BodyLocationENUM): void
 }
-BodyLocationFeat --> BodyLocation
+BodyLocationFeat --> BodyLocationENUM
 BodyLocationFeat --|> IFeatAttribute
 
-enum Duration {
-        Momentary,
-        Limited,
-        Extended,
-        Unlimited
+enum DurationENUM {
+        MOMENTARY
+        LIMITED
+        EXTENDED
+        UNLIMITED
 }
 class DurationFeat {
-        getDuration(): Duration
-        setDuration(value: Duration)
+        getDuration(): DurationENUM
+        setDuration(value: DurationENUM)
 }
-DurationFeat --> Duration
+DurationFeat --> DurationENUM
 DurationFeat --|> IFeatAttribute
 
 class TargetFeat {
@@ -47,39 +49,39 @@ TargetFeat --|> IFeatAttribute
 TargetFeat *-- "1" DistanceFeat
 TargetFeat *-- "0..1" AreaFeat
 
-enum DistanceType {
-        Defined
-        Contact
-        Sensory
-        Limitless
+enum DistanceTypeENUM {
+        DEFINED
+        CONTACT
+        SENSORY
+        LIMITLESS
 }
 class DistanceFeat  {
         getDistanceMultiplier(): int
-        getDistanceType(): DistanceType
+        getDistanceType(): DistanceTypeENUM
         getDistanceValue(): int
         
         setDistanceMultiplier(value: int): void
-        setDistanceType(value: DistanceType): void
+        setDistanceType(value: DistanceTypeENUM): void
         setDistanceValue(value: int): void
 }
 DistanceFeat --|> IFeatAttribute
-DistanceFeat --> DistanceType
+DistanceFeat --> DistanceTypeENUM
 
-enum AreaType {
-        Defined
-        Sensory
+enum AreaTypeENUM {
+        DEFINED
+        SENSORY
 }
 class AreaFeat {
         getAreaMultiplier(): int
-        getAreaType(): AreaType
+        getAreaType(): AreaTypeENUM
         getExcludedTarget(): int
 
         setAreaMultiplier(value: int): void
-        setAreaType(value: AreaType): void
+        setAreaType(value: AreaTypeENUM): void
         setExcludedTarget(value: int): void
 }
 AreaFeat --|> IFeatAttribute
-AreaFeat --> AreaType
+AreaFeat --> AreaTypeENUM
 
 
 class BonusFeat {
@@ -88,76 +90,76 @@ class BonusFeat {
 }
 BonusFeat --|> IFeatAttribute
 
-enum CharacterFeat {
-        Quickness
-        Magic
-        Intellect
-        Psyche
-        Agility
-        Force
+enum CharacterFeatENUM {
+        QUICKNESS
+        MAGIC
+        INTELLECT
+        PSYCHE
+        AGILITY
+        FORCE
 }
-enum CharacterAbility {
-        Range
-        Perception
-        Relationship
-        Contacts
-        Culture
-        Science
-        Dexterity
-        Physicality
-        Melee
+enum CharacterAbilityENUM {
+        RANGE
+        PERCEPTION
+        RELATIONSHIP
+        CONTACTS
+        CULTURE
+        SCIENCE
+        DEXTERITY
+        PHYSICALITY
+        MELEE
 }
 class SuccessBonusFeat {
-        + getCharacterFeat(): CharacterFeat
+        + getCharacterFeat(): CharacterFeatENUM
         + setCharacterFeat(): void
 }
-SuccessBonusFeat --> CharacterFeat
+SuccessBonusFeat --> CharacterFeatENUM
 SuccessBonusFeat -|> BonusFeat
 
 class PotentialBonusFeat {
-        + getCharacterAbility(): CharacterAbility
+        + getCharacterAbility(): CharacterAbilityENUM
         + setCharacterAbility(): void
 }
-PotentialBonusFeat --> CharacterAbility
+PotentialBonusFeat --> CharacterAbilityENUM
 PotentialBonusFeat -|> BonusFeat
 
-enum CombatType {
-        None
-        Confrontation
-        Defensive
-        Offensive
+enum CombatTypeENUM {
+        NONR
+        CONFRONTATION
+        DEFENSIVE
+        OFFENSIVE
 }
 class CombatFeat {
-        + getCombatType(): CombatType
-        + setCombatType(value: CombatType): void 
+        + getCombatType(): CombatTypeENUM
+        + setCombatType(value: CombatTypeENUM): void 
 }
 CombatFeat --|> IFeatAttribute
-CombatFeat --> CombatType
+CombatFeat --> CombatTypeENUM
 
-enum InfluenceType {
-        None
-        Mystical
-        Psychic
+enum InfluenceTypeENUM {
+        NONE
+        MYSTICAL
+        PSYCHIC
 }
-enum DamageType {
-        Base
-        Debilitating
-        Incapacitating
-        Stun
-        Extended
-        Persistent
-        Flurry
+enum DamageTypeENUM {
+        BASE
+        DEBILITATING
+        INCAPACITATING
+        STUN
+        EXTENDED
+        PERSISTENT
+        FLURRY
 }
 class AttackFeat {
-        + getDamageTypes(): List<DamageType>
-        + getInfluenceType(): InfluenceType
+        + getDamageTypes(): List<DamageTypeENUM>
+        + getInfluenceType(): InfluenceTypeENUM
 
-        + setDamageTypes(damageTypes: List<DamageType>)
-        + setInfluenceType(value: InfluenceType)
+        + setDamageTypes(damageTypes: List<DamageTypeENUM>)
+        + setInfluenceType(value: InfluenceTypeENUM)
 }
 AttackFeat --|> IFeatAttribute
-AttackFeat --> InfluenceType
-AttackFeat --> DamageType
+AttackFeat --> InfluenceTypeENUM
+AttackFeat --> DamageTypeENUM
 
 class MovementFeat {
         + getFollow(): boolean

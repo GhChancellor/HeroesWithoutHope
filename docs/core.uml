@@ -15,7 +15,7 @@ class HeroicFeat {
         + getId(): String
         + getMagnitude(): int
         + getName(): String
-        + getAttrbutes(): List<IAttribute>
+        + getAttrbutes(): List<IFeatAttribute>
         
         + setDescription(value: String): void
         + setId(value: String): void

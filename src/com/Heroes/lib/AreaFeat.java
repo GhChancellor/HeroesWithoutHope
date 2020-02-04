@@ -6,13 +6,12 @@
 package com.Heroes.lib;
 
 import com.Heroes.lib.enumClass.AreaTypeENUM;
-import com.Heroes.lib.interfaceClass.IFeatAttribute;
 
 /**
  * Aggiungi interfacccia IFeatAttribute
  * @author lele
  */
-public class AreaFeat implements IFeatAttribute{
+public class AreaFeat{
     private int areaMultiplier;
     private int excludedTarget;
     private AreaTypeENUM areaType;
@@ -66,21 +65,6 @@ public class AreaFeat implements IFeatAttribute{
      */
     public void setAreaType(AreaTypeENUM areaType) {
         this.areaType = areaType;
-    }
-
-    @Override
-    public String getDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getMagnitude() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

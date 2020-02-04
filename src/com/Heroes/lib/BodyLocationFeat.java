@@ -6,13 +6,12 @@
 package com.Heroes.lib;
 
 import com.Heroes.lib.enumClass.BodyLocationENUM;
-import com.Heroes.lib.interfaceClass.IFeatAttribute;
 
 /**
- * ????? è quello che indendevi?
+ * 
  * @author lele
  */
-public class BodyLocationFeat implements IFeatAttribute{
+public class BodyLocationFeat{
     private BodyLocationENUM bodyLocation;
 
     public BodyLocationFeat() {
@@ -32,22 +31,6 @@ public class BodyLocationFeat implements IFeatAttribute{
      */
     public void setBodyLocation(BodyLocationENUM bodyLocation) {
         this.bodyLocation = bodyLocation;
-    }
-
-    @Override
-    public String getDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getMagnitude() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }  
     
 }

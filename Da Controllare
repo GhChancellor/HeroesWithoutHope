@@ -1,25 +1,4 @@
 
-class TargetFeat {
-        getArea: AreaFeat
-        getDistance(): DistanceFeat
-        getNumberOfTarget(): int
-
-        setArea(value: AreaFeat): void        
-        setDistance(value: DistanceFeat): void
-        setNumberOfTarget(value: int): void
-}
-
-secondo me sarebbe meglio cosi
-
-class TargetFeat {
-        getAreaFeat: AreaFeatENUM <<<<<
-        getDistanceFeat(): DistanceFeatENUM <<<<<
-        getNumberOfTarget(): int
-
-        setAreaFeat(value: AreaFeatENUM): void      <<<<<<  
-        setDistanceFeat(value: DistanceFeatENUM): void <<<<<
-        setNumberOfTarget(value: int): void
-}
 Il bersaglio puo' essere singolo o all'interno di un'area. Ognuno dei
 due casi ha un calcolo della magnitudo diversa, quindi serve un
 oggetto AreaFeat che ha la sua configurazione e il suo calcolo, da

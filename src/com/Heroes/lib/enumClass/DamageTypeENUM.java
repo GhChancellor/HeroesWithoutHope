@@ -3,12 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Heroes.lib;
+package com.Heroes.lib.enumClass;
 
 /**
  *
  * @author lele
  */
-public class SuccessBonusFeat____CONTINUARE_DA_QUI {
-    
+public enum DamageTypeENUM {
+    BASE,
+    DEBILITATING,
+    INCAPACITATING,
+    STUN,
+    EXTENDED,
+    PERSISTENT,
+    FLURRY;
 }

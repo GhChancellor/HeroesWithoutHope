@@ -2,23 +2,21 @@
 
 class HeroicAbility {
         + getDescription(): String
-        + getId(): String
+        + getId(): int
         + getName(): String
-
         + setDescription(value: String): void
-        + setId(value: String): void
+        + setId(value: int): void
         + setName(value: String): void
 }
 
 class HeroicFeat {
         + getDescription(): String
-        + getId(): String
+        + getId(): int
         + getMagnitude(): int
         + getName(): String
         + getAttrbutes(): List<IFeatAttribute>
-        
         + setDescription(value: String): void
-        + setId(value: String): void
+        + setId(value: int): void
         + setName(value: String): void
 }
 

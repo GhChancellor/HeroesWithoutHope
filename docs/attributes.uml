@@ -16,12 +16,17 @@ enum BodyLocationENUM {
         LEFT_LEG
         RIGHT_LEG
 }
-class BodyLocationFeat {
-        getBodyLocation(): BodyLocationENUM
-        setBodyLocation(value: BodyLocationENUM): void
+class BodyLocationFeatModel {
+        + getBodyLocation(): BodyLocationENUM
+        + setBodyLocation(value: BodyLocationENUM): void
 }
-BodyLocationFeat --> BodyLocationENUM
+BodyLocationFeatModel --> BodyLocationENUM
+
+class BodyLocationFeat {
+        + BodyLocationFeat(model: BodyLocationFeatModel)
+}
 BodyLocationFeat --|> IFeatAttribute
+BodyLocationFeat *-- BodyLocationFeatModel 
 
 enum DurationENUM {
         MOMENTARY
@@ -29,25 +34,35 @@ enum DurationENUM {
         EXTENDED
         UNLIMITED
 }
-class DurationFeat {
-        getDuration(): DurationENUM
-        setDuration(value: DurationENUM)
+class DurationFeatModel {
+        + getDuration(): DurationENUM
+        + setDuration(value: DurationENUM)
 }
-DurationFeat --> DurationENUM
+DurationFeatModel --> DurationENUM
+
+class DurationFeat {
+        + DurationFeat(model: DurationFeat)
+}
 DurationFeat --|> IFeatAttribute
+DurationFeat *-- DurationFeatModel
+
+class TargetFeatModel {
+        + getArea(): AreaModel
+        + getDistance(): DistanceModel
+        + getNumberOfTarget(): int
+
+        + setArea(value: AreaModel): void        
+        + setDistance(value: DistanceModel): void
+        + setNumberOfTarget(value: int): void
+}
+TargetFeatModel *-- "1" DistanceModel
+TargetFeatModel *-- "0..1" AreaModel
 
 class TargetFeat {
-        getArea: AreaFeat
-        getDistance(): DistanceFeat
-        getNumberOfTarget(): int
-
-        setArea(value: AreaFeat): void        
-        setDistance(value: DistanceFeat): void
-        setNumberOfTarget(value: int): void
+        TargetFeat(model: TargetFeatModel)
 }
 TargetFeat --|> IFeatAttribute
-TargetFeat *-- "1" DistanceFeat
-TargetFeat *-- "0..1" AreaFeat
+TargetFeat *-- TargetFeatModel
 
 enum DistanceTypeENUM {
         DEFINED
@@ -55,40 +70,33 @@ enum DistanceTypeENUM {
         SENSORY
         LIMITLESS
 }
-class DistanceFeat  {
-        getDistanceMultiplier(): int
-        getDistanceType(): DistanceTypeENUM
-        getDistanceValue(): int
+class DistanceModel  {
+        + getDistanceMultiplier(): int
+        + getDistanceType(): DistanceTypeENUM
+        + getDistanceValue(): int
         
-        setDistanceMultiplier(value: int): void
-        setDistanceType(value: DistanceTypeENUM): void
-        setDistanceValue(value: int): void
+        + setDistanceMultiplier(value: int): void
+        + setDistanceType(value: DistanceTypeENUM): void
+        + setDistanceValue(value: int): void
 }
-DistanceFeat --|> IFeatAttribute
-DistanceFeat --> DistanceTypeENUM
+DistanceModel --> DistanceTypeENUM
 
 enum AreaTypeENUM {
         DEFINED
         SENSORY
 }
-class AreaFeat {
-        getAreaMultiplier(): int
-        getAreaType(): AreaTypeENUM
-        getExcludedTarget(): int
+class AreaModel {
+        + getAreaMultiplier(): int
+        + getAreaType(): AreaTypeENUM
+        + getExcludedTarget(): int
 
-        setAreaMultiplier(value: int): void
-        setAreaType(value: AreaTypeENUM): void
-        setExcludedTarget(value: int): void
+        + setAreaMultiplier(value: int): void
+        + setAreaType(value: AreaTypeENUM): void
+        + setExcludedTarget(value: int): void
 }
-AreaFeat --|> IFeatAttribute
-AreaFeat --> AreaTypeENUM
+AreaModel --> AreaTypeENUM
 
 
-class BonusFeat {
-        + getValue(): int
-        + setValue(value: int): void
-}
-BonusFeat --|> IFeatAttribute
 
 enum CharacterFeatENUM {
         QUICKNESS
@@ -98,6 +106,14 @@ enum CharacterFeatENUM {
         AGILITY
         FORCE
 }
+class CharacterFeatBonus {
+        + getCharacterFeat(): CharacterFeatENUM
+        + getValue():  int
+        + setCharacterFeat(characterFeat: CharacterFeatENUM): void
+        + setValue(value:  int): void
+}
+CharacterFeatBonus --> CharacterFeatENUM
+
 enum CharacterAbilityENUM {
         RANGE
         PERCEPTION
@@ -109,32 +125,29 @@ enum CharacterAbilityENUM {
         PHYSICALITY
         MELEE
 }
-class SuccessBonusFeat {
-        + getCharacterFeat(): CharacterFeatENUM
-        + setCharacterFeat(): void
-}
-SuccessBonusFeat --> CharacterFeatENUM
-SuccessBonusFeat -|> BonusFeat
-
-class PotentialBonusFeat {
+class CharacterAbilityBonus {
         + getCharacterAbility(): CharacterAbilityENUM
-        + setCharacterAbility(): void
+        + getValue():  int
+        + setCharacterFeat(characterAbility: CharacterAbilityENUM): void
+        + setValue(value:  int): void
 }
-PotentialBonusFeat --> CharacterAbilityENUM
-PotentialBonusFeat -|> BonusFeat
+CharacterAbilityBonus --> CharacterAbilityENUM
 
-enum CombatTypeENUM {
-        NONR
-        CONFRONTATION
-        DEFENSIVE
-        OFFENSIVE
+class BonusFeatModel {
+        + getCharacterAbilities(): List<CharacterAbilityBonus>
+        + getCharacterFeats(): List<CharacterFeatBonus>
+        + setCharacterAbilities(characterAbilities: List<CharacterAbilityBonus>): void
+        + setCharacterFeats(characterFeats: List<CharacterFeatBonus>): void
 }
-class CombatFeat {
-        + getCombatType(): CombatTypeENUM
-        + setCombatType(value: CombatTypeENUM): void 
+BonusFeatModel *-- "*" CharacterAbilityBonus
+BonusFeatModel *-- "*" CharacterFeatBonus
+
+class BonusFeat {
+        + BonusFeat(model: BonusFeatModel)
 }
-CombatFeat --|> IFeatAttribute
-CombatFeat --> CombatTypeENUM
+BonusFeat --|> IFeatAttribute
+BonusFeat *-- BonusFeatModel
+
 
 enum InfluenceTypeENUM {
         NONE
@@ -150,18 +163,38 @@ enum DamageTypeENUM {
         PERSISTENT
         FLURRY
 }
-class AttackFeat {
+class DamageModel {
         + getDamageTypes(): List<DamageTypeENUM>
         + getInfluenceType(): InfluenceTypeENUM
 
         + setDamageTypes(damageTypes: List<DamageTypeENUM>)
         + setInfluenceType(value: InfluenceTypeENUM)
 }
-AttackFeat --|> IFeatAttribute
-AttackFeat --> InfluenceTypeENUM
-AttackFeat --> DamageTypeENUM
+DamageModel --> InfluenceTypeENUM
+DamageModel --> DamageTypeENUM
 
-class MovementFeat {
+enum CombatTypeENUM {
+        NONE
+        CONFRONTATION
+        DEFENSIVE
+        OFFENSIVE
+}
+class CombatFeatModel {
+        + getCombatType(): CombatTypeENUM
+        + getDamageModel(): DamageModel
+        + setCombatType(value: CombatTypeENUM): void
+        + setDamageModel(value: DamageModel): void 
+}
+CombatFeatModel --> CombatTypeENUM
+CombatFeatModel *-- "0..1" DamageModel
+
+class CombatFeat {
+        + constructor(model: CombatFeatModel)
+}
+CombatFeat --|> IFeatAttribute
+CombatFeat *-- CombatFeatModel
+
+class MovementFeatModel {
         + getFollow(): boolean
         + getMultiplier(): int
         + getValue(): int
@@ -170,12 +203,22 @@ class MovementFeat {
         + setMultiplier(value: int)
         + setValue(value: int)
 }
+class MovementFeat {
+        + MovementFeat(model: MovementFeatModel)
+}
 MovementFeat --|> IFeatAttribute
+MovementFeat *-- MovementFeatModel
 
-class EditorFeat {
+
+class EditorFeatModel {
         + getValue(): int
         + setValue(value: int)
 }
+class EditorFeat {
+        + EditorFeat(model: EditorFeat)
+}
+
 EditorFeat --|> IFeatAttribute
+EditorFeat *-- EditorFeatModel
 
 @enduml

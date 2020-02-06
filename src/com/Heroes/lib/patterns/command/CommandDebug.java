@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 Guybrush aka Gabriele L.
+ * Copyright (C) Guybrush aka Gabriele L.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -17,22 +17,36 @@
 package com.Heroes.lib.patterns.command;
 
 /**
- * This is the base class for command pattern
+ * This is an implementation of the command interface used for debug purpose. It
+ * checks the contract before and after execution of each methods.
  * @author Guybrush aka Gabriele L.
+ * @param <T> Type of the command argument.
  */
-public abstract class CommandBase<T> implements ICommand<T> {
+public class CommandDebug<T> implements ICommand<T>  {
 
-    @Override
-    public boolean canExecute(T arg) {
-        return this.onCanExecuteOverride(arg);
-    }
-
-    @Override
-    public void execute(T arg) {
-        this.onExecuteOverride(arg);
+    /** Command to check */ 
+    private final ICommand<T> _command;
+    
+    /**
+     * Constructor with one parameter. Initialize the debug command with the
+     * one to check
+     * @param command Target command to debug.
+     */
+    public CommandDebug(ICommand<T> command) {
+        this._command = command;
     }
     
-    protected abstract boolean onCanExecuteOverride(T arg);
-    protected abstract void onExecuteOverride(T arg);
+    /** @inheritdoc */
+    @Override
+    public boolean canExecute(T arg) {
+        return this._command.canExecute(arg);
+    }
+
+    /** @inheritdoc */
+    @Override
+    public void execute(T arg) {
+        assert(this.canExecute(arg));
+        this._command.execute(arg);
+    }
     
 }

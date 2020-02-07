@@ -33,14 +33,18 @@ public final class ChainUtils {
     public static <T> IChainStep<T> createChain(Collection<IChainStep<T>> steps) {
         IChainStep<T> first = null;
         IChainStep<T> prev = null;
-        for (IChainStep<T> next : steps) {
-            if (first == null) {
-                first = next;
-            }
-            if (prev != null){
-                prev.setNext(next);
-            } else {
-                prev = next;
+        if (steps != null) {
+            for (IChainStep<T> next : steps) {
+                next.setNext(null);
+                if (first == null) {
+                    first = next;
+                }
+                if (prev != null){
+                    prev.setNext(next);
+                } else {
+                    prev = next;
+                }
+                
             }
         }
         return first;

@@ -17,8 +17,8 @@ enum BodyLocationENUM {
         RIGHT_LEG
 }
 class BodyLocationFeatModel {
-        + getBodyLocation(): BodyLocationENUM
-        + setBodyLocation(value: BodyLocationENUM): void
+        + getBodyLocation(): List<BodyLocationENUM>
+        + setBodyLocation(value: List<BodyLocationENUM>): void
 }
 BodyLocationFeatModel --> BodyLocationENUM
 
@@ -49,11 +49,9 @@ DurationFeat *-- DurationFeatModel
 class TargetFeatModel {
         + getArea(): AreaModel
         + getDistance(): DistanceModel
-        + getNumberOfTarget(): int
 
         + setArea(value: AreaModel): void        
         + setDistance(value: DistanceModel): void
-        + setNumberOfTarget(value: int): void
 }
 TargetFeatModel *-- "1" DistanceModel
 TargetFeatModel *-- "0..1" AreaModel
@@ -74,10 +72,12 @@ class DistanceModel  {
         + getDistanceMultiplier(): int
         + getDistanceType(): DistanceTypeENUM
         + getDistanceValue(): int
+        + getNumberOfTarget(): int
         
         + setDistanceMultiplier(value: int): void
         + setDistanceType(value: DistanceTypeENUM): void
         + setDistanceValue(value: int): void
+        + setNumberOfTarget(value: int): void
 }
 DistanceModel --> DistanceTypeENUM
 

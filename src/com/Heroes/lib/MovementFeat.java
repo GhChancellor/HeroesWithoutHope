@@ -5,65 +5,54 @@
  */
 package com.Heroes.lib;
 
+import com.Heroes.lib.interfaceClass.IFeatAttribute;
+
 /**
- *
+ * 
  * @author lele
  */
-public class MovementFeat {
-    private boolean follow;
-    private int multiplier;
-    private int value;
+public class MovementFeat implements IFeatAttribute {
+    private MovementFeatModel movementFeatModel;
+    private static final int MULTIPLIER_VALUE = 10;
 
-    public MovementFeat() {
+    public MovementFeat(MovementFeatModel movementFeatModel) {
+        this.movementFeatModel = movementFeatModel;
     }
 
     /**
-     * Get Follow
+     * TODO: Utilizzare un dizionario delle lingue.
      * @return 
      */
-    public boolean isFollow() {
-        return follow;
+    @Override
+    public String getDescription() {
+        String description = "";
+        if (this.movementFeatModel != null) {
+            if(this.movementFeatModel.isFollow()) {
+                description = "segue";
+            } else {
+                int movement = this.movementFeatModel.getValue() * this.movementFeatModel.getMultiplier() * MULTIPLIER_VALUE; 
+                description = movement + " m/V";
+            }
+        }
+        
+        return description;
+    }
+
+    @Override
+    public int getMagnitude() {
+        if (movementFeatModel.isFollow()) {
+            return 1;
+        } else {
+            return 3 * movementFeatModel.getMultiplier() + 2 * movementFeatModel.getValue();
+        }
     }
 
     /**
-     * Set Follow
-     * @param follow 
-     */
-    public void setFollow(boolean follow) {
-        this.follow = follow;
-    }
-
-    /**
-     * Get Multiplier
+     * TODO: Utilizzare un dizionario delle lingue.
      * @return 
      */
-    public int getMultiplier() {
-        return multiplier;
+    @Override
+    public String getName() {
+        return "Spostamento";    
     }
-
-    /**
-     * Set Multiplier
-     * @param multiplier 
-     */
-    public void setMultiplier(int multiplier) {
-        this.multiplier = multiplier;
-    }
-
-    /**
-     * Get Value
-     * @return 
-     */
-    public int getValue() {
-        return value;
-    }
-
-    /**
-     * Set Value
-     * @param value 
-     */
-    public void setValue(int value) {
-        this.value = value;
-    }
-    
-    
 }

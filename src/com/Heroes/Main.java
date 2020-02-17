@@ -5,11 +5,11 @@
  */
 package com.Heroes;
 
-import com.Heroes.lib.MovementFeat;
-import com.Heroes.lib.MovementFeatModel;
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
+import com.prove.movement.MovementFeat;
+import com.prove.movement.MovementFeatModel;
 import java.io.PrintStream;
-import java.util.List;
+
 
 /**
  *

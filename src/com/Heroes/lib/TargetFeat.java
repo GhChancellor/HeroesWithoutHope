@@ -1,69 +1,49 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2020 lele
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.Heroes.lib;
 
+import com.Heroes.lib.interfaceClass.IFeatAttribute;
+import com.Heroes.lib.model.TargetFeatModel;
+
 /**
- * implementare interface
+ *
  * @author lele
  */
-public class TargetFeat {
-    private AreaFeat areaFeat = new AreaFeat();
-    private DistanceFeat distanceFeat = new DistanceFeat();
-    private int numberOfTarget;
+public class TargetFeat implements IFeatAttribute {
 
-    public TargetFeat() {
-    }
+    private TargetFeatModel targetFeatModel;
 
-    /**
-     * Get Area Feat
-     * @return 
-     */
-    public AreaFeat getAreaFeat() {
-        return areaFeat;
-    }
-
-    /**
-     * Set Area Feat
-     * @param areaFeat 
-     */
-    public void setAreaFeat(AreaFeat areaFeat) {
-        this.areaFeat = areaFeat;
-    }
-
-    /**
-     * Get Distance Feat
-     * @return 
-     */
-    public DistanceFeat getDistanceFeat() {
-        return distanceFeat;
-    }
-
-    /**
-     * Set Distance Feat
-     * @param distanceFeat 
-     */
-    public void setDistanceFeat(DistanceFeat distanceFeat) {
-        this.distanceFeat = distanceFeat;
-    }
-
-    /**
-     * Get Number Of Target
-     * @return 
-     */
-    public int getNumberOfTarget() {
-        return numberOfTarget;
-    }
-
-    /**
-     * Set Number Of Target
-     * @param numberOfTarget 
-     */
-    public void setNumberOfTarget(int numberOfTarget) {
-        this.numberOfTarget = numberOfTarget;
+    public TargetFeat(TargetFeatModel targetFeatModel) {
+        this.targetFeatModel = targetFeatModel;
     }
     
+    @Override
+    public String getDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int getMagnitude() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

@@ -1,36 +1,48 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2020 lele
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.Heroes.lib;
 
-import com.Heroes.lib.enumClass.BodyLocationENUM;
+import com.Heroes.lib.interfaceClass.IFeatAttribute;
+import com.Heroes.lib.model.BodyLocationFeatModel;
 
 /**
- * 
+ *
  * @author lele
  */
-public class BodyLocationFeat{
-    private BodyLocationENUM bodyLocation;
+public class BodyLocationFeat implements IFeatAttribute{
+    private BodyLocationFeatModel bodyLocationFeatModel;
 
-    public BodyLocationFeat() {
+    public BodyLocationFeat(BodyLocationFeatModel bodyLocationFeatModel) {
+        this.bodyLocationFeatModel = bodyLocationFeatModel;
+    }
+    
+    @Override
+    public String getDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Get Body Location
-     * @return 
-     */
-    public BodyLocationENUM getBodyLocation() {
-        return bodyLocation;
+    @Override
+    public int getMagnitude() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Set Body Location
-     * @param bodyLocation 
-     */
-    public void setBodyLocation(BodyLocationENUM bodyLocation) {
-        this.bodyLocation = bodyLocation;
-    }  
+    @Override
+    public String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

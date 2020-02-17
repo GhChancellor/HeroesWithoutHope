@@ -5,66 +5,33 @@
  */
 package com.Heroes.lib;
 
-import com.Heroes.lib.enumClass.AreaTypeENUM;
+import com.Heroes.lib.model.AreaFeatModel;
+import com.Heroes.lib.interfaceClass.IFeatAttribute;
 
 /**
- * Aggiungi interfacccia IFeatAttribute
+ *
  * @author lele
  */
-public class AreaFeat{
-    private int areaMultiplier;
-    private int excludedTarget;
-    private AreaTypeENUM areaType;
+public class AreaFeat implements IFeatAttribute{
+    private AreaFeatModel areaFeatModel;
 
-    public AreaFeat() {
+    public AreaFeat(AreaFeatModel areaFeatModel) {
+        this.areaFeatModel = areaFeatModel;
     }
 
-    /**
-     * Get Area Multiplier
-     * @return 
-     */
-    public int getAreaMultiplier() {
-        return areaMultiplier;
+    @Override
+    public String getDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Set Area Multiplier
-     * @param areaMultiplier 
-     */
-    public void setAreaMultiplier(int areaMultiplier) {
-        this.areaMultiplier = areaMultiplier;
+    @Override
+    public int getMagnitude() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Get Excluded Target
-     * @return 
-     */
-    public int getExcludedTarget() {
-        return excludedTarget;
-    }
-
-    /**
-     * Set Excluded Target
-     * @param excludedTarget 
-     */
-    public void setExcludedTarget(int excludedTarget) {
-        this.excludedTarget = excludedTarget;
-    }
-
-    /**
-     * Get Area Type
-     * @return 
-     */
-    public AreaTypeENUM getAreaType() {
-        return areaType;
-    }
-
-    /**
-     * Set Area Type
-     * @param areaType 
-     */
-    public void setAreaType(AreaTypeENUM areaType) {
-        this.areaType = areaType;
-    }
+    @Override
+    public String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }    
     
 }

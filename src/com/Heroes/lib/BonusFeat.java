@@ -1,32 +1,48 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright (C) 2020 lele
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 package com.Heroes.lib;
 
+import com.Heroes.lib.interfaceClass.IFeatAttribute;
+import com.Heroes.lib.model.BonusFeatModel;
+
 /**
- * Aggiungi interface IFeatAttribute
+ *
  * @author lele
  */
-public class BonusFeat {
-    private int value;
+public class BonusFeat implements IFeatAttribute{
+    private BonusFeatModel bonusFeatModel;
 
-    /**
-     * Get Value
-     * @return 
-     */
-    public int getValue() {
-        return value;
+    public BonusFeat(BonusFeatModel bonusFeatModel) {
+        this.bonusFeatModel = bonusFeatModel;
+    }
+        
+    @Override
+    public String getDescription() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Set Value
-     * @param value 
-     */
-    public void setValue(int value) {
-        this.value = value;
+    @Override
+    public int getMagnitude() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public String getName() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

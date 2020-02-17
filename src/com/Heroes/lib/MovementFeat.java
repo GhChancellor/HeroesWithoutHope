@@ -6,6 +6,8 @@
 package com.Heroes.lib;
 
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
+import com.prove.movement.MovementFeatModel;
+
 
 /**
  * 
@@ -13,46 +15,24 @@ import com.Heroes.lib.interfaceClass.IFeatAttribute;
  */
 public class MovementFeat implements IFeatAttribute {
     private MovementFeatModel movementFeatModel;
-    private static final int MULTIPLIER_VALUE = 10;
 
     public MovementFeat(MovementFeatModel movementFeatModel) {
         this.movementFeatModel = movementFeatModel;
     }
 
-    /**
-     * TODO: Utilizzare un dizionario delle lingue.
-     * @return 
-     */
     @Override
     public String getDescription() {
-        String description = "";
-        if (this.movementFeatModel != null) {
-            if(this.movementFeatModel.isFollow()) {
-                description = "segue";
-            } else {
-                int movement = this.movementFeatModel.getValue() * this.movementFeatModel.getMultiplier() * MULTIPLIER_VALUE; 
-                description = movement + " m/V";
-            }
-        }
-        
-        return description;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public int getMagnitude() {
-        if (movementFeatModel.isFollow()) {
-            return 1;
-        } else {
-            return 3 * movementFeatModel.getMultiplier() + 2 * movementFeatModel.getValue();
-        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * TODO: Utilizzare un dizionario delle lingue.
-     * @return 
-     */
     @Override
     public String getName() {
-        return "Spostamento";    
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

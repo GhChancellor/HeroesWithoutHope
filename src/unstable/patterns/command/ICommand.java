@@ -14,31 +14,35 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.Heroes.lib.patterns.chain;
+package unstable.patterns.command;
 
 /**
- * This is the interface representing a generic step for a chain of
- * responsibility.
+ * This is the interface used to implement a command pattern.
  * @author Guybrush aka Gabriele L.
- * @param <T> Type of the chain model
+ * @param <T> Argument of the command pattern.
  */
-public interface IChainStep<T> {
+public interface ICommand<T> {
     /**
-     * Gets the next step of the chain. If this object is the chain's end, it
-     * returns null
-     * @return The next step of the chain, null if this is the last.
+     * Checker method of the command. It is used to know if the command can be
+     * executed on argument passed.
+     * @param arg Argument to check
+     * @return True if this command can be executed on argument passed, false
+     *         otherwise.
+     *
+     * CONTRACT
+     * @pre  No preconditions.
+     * @post No post conditions.
+
      */
-    IChainStep<T> getNext();
-    
+    boolean canExecute(T arg);
+
     /**
-     * Set the next step of the chain.
-     * @param next Step of the chain to set as next
+     * Execution method, it executes the command.
+     * @param arg Argument of the command
+     * 
+     * CONTRACT
+     * @pre  Command can be executed.
+     * @post No exception to be thrown.
      */
-    void setNext(IChainStep<T> next);
-    
-    /**
-     * Perform the step of the chain on model passed as parameter.
-     * @param model Model used to execute the chain step on.
-     */
-    void performStep(T model);
+    void execute(T arg);
 }

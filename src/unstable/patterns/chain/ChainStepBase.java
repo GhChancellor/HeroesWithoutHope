@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.Heroes.lib.patterns.chain;
+package unstable.patterns.chain;
 
 /**
  * This is the abstract base implementation for a chain step. See IChainStep.

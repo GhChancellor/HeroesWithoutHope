@@ -16,6 +16,8 @@
  */
 package com.Heroes.lib.patterns.chain;
 
+import unstable.patterns.chain.IChainStep;
+import unstable.patterns.chain.ChainStepBase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

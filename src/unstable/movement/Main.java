@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Heroes;
+package unstable.movement;
 
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
-import com.prove.movement.MovementFeat;
-import com.prove.movement.MovementFeatModel;
+import unstable.movement.MovementFeat;
+import unstable.movement.MovementFeatModel;
 import java.io.PrintStream;
 
 

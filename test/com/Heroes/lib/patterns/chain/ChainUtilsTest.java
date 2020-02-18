@@ -16,6 +16,9 @@
  */
 package com.Heroes.lib.patterns.chain;
 
+import unstable.patterns.chain.ChainUtils;
+import unstable.patterns.chain.IChainStep;
+import unstable.patterns.chain.ChainStepBase;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

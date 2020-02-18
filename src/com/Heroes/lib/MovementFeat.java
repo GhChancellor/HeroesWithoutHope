@@ -6,7 +6,7 @@
 package com.Heroes.lib;
 
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
-import com.prove.movement.MovementFeatModel;
+import unstable.movement.MovementFeatModel;
 
 
 /**

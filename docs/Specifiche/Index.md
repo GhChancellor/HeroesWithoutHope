@@ -3,6 +3,194 @@
 Il progetto consiste in un tool per la gestione delle gesta per il
 gioco di ruolo Project H.O.P.E.
 
+```
+
+public static void main(String[] args) {
+    HeroicFeat heroicFeat = new HeroicFeat();
+
+    String name = input();
+    String description = input();
+    heroicFeat.setName(name);
+    heroicFeat.setDescription(description);
+
+    List<IFeatAttribute> featAttributes = new ArrayList<IFeatAttribute>();
+    
+    // I passi vanno eseguiti in quest'ordine preciso!
+    featAttributes.add(01_GetBodyLocation());
+    featAttributes.add(02_GetDuration());
+    featAttributes.add(03_GetTargets());
+
+    IFeatAttribute bonusFeat = 04_GetBonus();
+    if(bonusFeat != null) {
+        featAttributes.add(bonusFeat);
+    }
+    IFeatAttribute movementFeat = 05_GetMovement();
+    if(movementFeat != null) {
+        featAttributes.add(movementFeat);
+    }
+
+    IFeatAttribute movementFeat = 05_GetMovement();
+    if(movementFeat != null) {
+        featAttributes.add(movementFeat);
+    }
+
+    IFeatAttribute combatFeat = 06_GetCombat();
+    if(combatFeat != null) {
+        featAttributes.add(combatFeat);
+    }
+
+    IFeatAttribute editorFeat = 07_GetEditor();
+    if (editorFeat != null) {
+        featAttributes.add(editorFeat);
+    }
+    heroicFeat.setAttributes(featAttributes);
+}
+
+private IFeatAttribute 01_GetBodyLocation() {
+    BodyLocationModel model = new BodyLocationModel();
+    List<BodyLocationENUM> locations = input();
+    model.setBodyLocation(locations);
+    return new BodyLocationFeat(model);
+}
+
+private IFeatAttribute 02_GetDuration() {
+    DurationFeatModel model = new DurationFeatModel();
+    DurationENUM duration = input();
+    model.setDuration(duration);
+    return new DurationFeat(model);
+}
+
+private IFeatAttribute 03_GetTargets() {
+    bool usaArea = input();
+    TargetFeatModel model = new TargetFeatModel();
+    if(usaArea) {
+        AreaModel areaModel = new AreaModel();
+        AreaTypeENUM areaType = input();
+        areaModel.setAreaType(areaType);
+        if(areaType == AreaTypeENUM.DEFINED) {
+            int multiplier = input();
+            int excludedTargets = input();
+            areaModel.setAreaMultiplier(multiplier);
+            areaModel.setExcludedTarget(excludedTarget);
+        }
+        model.setArea(areaModel);
+    }
+    DistanceModel distanceModel = new DistanceModel();
+    DistanceTypeENUM distanceType = input();
+    distanceModel.setDistanceType(distanceType);
+    if (distanceType == DistanceTypeENUM.DEFINED) {
+        int meters = input();
+        int multiplier = input();
+        distanceModel.setValue(meters);
+        distanceModel.setMultiplier(multiplier);
+    }
+    int numberOfTarget = input();
+    distanceModel.setNumberOfTarget(numberOfTarget);
+    model.setDistance(distanceModel);
+    return new TargetFeat(model);
+}
+
+/*
+La magnitudo e' la somma dei due bonus: CharacterAbilityBonus e
+CharacterFeatBonus.
+   Per ogni abilita' in CharacterAbilityBonus la magnitudo e' il suo valore
+   Per ogni caratteristica in CharacterFeatBonus la magnitudo e' il suo valore * 3.
+ */
+private IFeatAttribute 04_GetBonus() {
+    bool isBonus = input();
+    if(isBonus) {
+        BonusFeatModel bonusFeatModel = new BonusFeatModel();
+        List<CharacterFeatBonus> characterFeats = new ArrayList<CharacterFeatBonus>();
+        // L'utente deve selezionare quali caratteristiche riceveranno il bonus
+        while(input()) {
+            CharacterFeatBonus characterFeatBonus = new CharacterFeatBonus ();
+            CharacterFeatENUM characterFeat = input();
+            int value = input();
+            characterFeatBonus.setCharacterFeat(characterFeat);
+            characterFeatBonus.setValue(value);
+            characterFeats.add(characterFeatBonus)
+        }
+        bonusFeatModel.setCharacterFeats(characterFeats);
+
+        List<CharacterAbilityBonus> characterAbilities = new ArrayList<CharacterAbilityBonus>();
+        // L'utente deve selezionare quali abilita' riceveranno il bonus
+        while(input()) {
+            CharacterAbilityBonus characterAbilityBonus = new CharacterAbilityBonus();
+            CharacterAbilityENUM characterAbility = input();
+            int value = input();
+            characterAbilityBonus.setCharacterAbility(characterAbility);
+            characterAbilityBonus.setValue(value);
+            characterAbilities.add(characterAbilityBonus)
+        }
+        bonusFeatModel.setCharacterAbilities(characterAbilities);
+        return new BonusFeat(bonusFeatModel);
+    } else {
+        return null;
+    }
+}
+
+/*
+ La magnitudo dei poteri di movimento, se definito si calcola 2*valore + 3*moltiplicatore
+ Se si imposta follow si aggiunge 1.
+*/
+private IFeatAttribute 05_GetMovement() {
+    boolean potereDiMovimento = input();
+    if(potereDiMovimento) {
+        bool follow = input();
+        int meters = input();
+        int multiplier = input();
+        MovementFeatModel movementFeatModel = new MovementFeatModel();
+        movementFeatModel.setFollow(follow);
+        movementFeatModel.setValue(meters);
+        movementFeatModel.setMultiplier(multiplier);
+        return new MovementFeat(movementFeatModel);
+    }
+    return null;
+}
+
+
+/*
+    La magnitudo qui si calcola in questo modo:
+        Se la tipologia e' CONFRONTATION oDEFENSIVE e' 1
+        Se e' OFFENSIVE e' 2 al quale si somma +3 se c'e' un influsso e la
+        tipologia di danno:
+            +1 per STUN
+            +2 per BASE, DEBILITATING, INCAPACITATING, PERSISTENT o FLURRY
+            +3 per EXTENDED
+*/
+private IFeatAttribute 06_GetCombat() {
+    CombatTypeENUM combatType = input();
+    CombatFeatModel combatFeatModel = new CombatFeatModel();
+    combatFeatModel.setCombatType(combatFeatModel);
+    if(combatType == CombatTypeENUM.NONE) {
+        return null;
+    } else if(combatType == CombatTypeENUM.OFFENSIVE) {
+        InfluenceTypeENUM influenceType= input();
+        DamageTypeENUM damageType = input();
+        DamageModel damageModel = new DamageModel();
+        damageModel.setInfluenceType(influenceType);
+        damageModel.setDamageType(damageType);
+        combatFeatModel.setDamageModel(damageModel);
+    }
+    return new CombatFeat(combatFeatModel);
+}
+
+/*
+La magnitudo e' uguale al valore inserito.
+*/
+private IFeatAttribute 07_GetEditor() {
+    EditorFeatModel editorFeatModel = new EditorFeatModel ();
+    int value = input();
+    editorFeatModel.setValue(value);
+    if(editorFeatModel.getValue() == 0) {
+        return null;
+    } else {
+        return new EditorFeat(editorFeatModel);
+    }
+    
+}
+```
+
 ## 1 Creazione
 
 La fase di creazione di un gesto avviene attraverso i passi definiti

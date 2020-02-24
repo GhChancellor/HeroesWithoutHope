@@ -24,11 +24,13 @@ public static void main(String[] args) {
     if(bonusFeat != null) {
         featAttributes.add(bonusFeat);
     }
+
     IFeatAttribute movementFeat = 05_GetMovement();
     if(movementFeat != null) {
         featAttributes.add(movementFeat);
     }
 
+    // Doppione
     IFeatAttribute movementFeat = 05_GetMovement();
     if(movementFeat != null) {
         featAttributes.add(movementFeat);

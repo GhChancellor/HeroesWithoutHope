@@ -14,22 +14,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.Heroes.lib;
+package com.prove.lele.P002.varanti;
 
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
-import com.Heroes.lib.model.AttackFeatModel;
+import com.Heroes.lib.model.BodyLocationFeatModel;
 
 /**
  *
  * @author lele
  */
-public class AttackFeat implements IFeatAttribute{
-    private AttackFeatModel attackFeatModel;
+public class BodyLocationFeatV2 extends BodyLocationFeatModel implements IFeatAttribute{
 
-    public AttackFeat(AttackFeatModel attackFeatModel) {
-        this.attackFeatModel = attackFeatModel;
+    public BodyLocationFeatV2() {
     }
-    
+        
     @Override
     public String getDescription() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

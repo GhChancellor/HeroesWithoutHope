@@ -14,23 +14,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.Heroes.lib;
+package com.Heroes.lib.feat;
 
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
-import com.Heroes.lib.model.CombatFeatModel;
+import com.Heroes.lib.model.DurationFeatModel;
 
 /**
  *
  * @author lele
  */
-public class CombatFeat implements IFeatAttribute{
+public class DurationFeat implements IFeatAttribute{
 
-    private CombatFeatModel combatFeatModel;
+    private DurationFeatModel durationFeatModel;
 
-    public CombatFeat(CombatFeatModel combatFeatModel) {
-        this.combatFeatModel = combatFeatModel;
+    public DurationFeat(DurationFeatModel durationFeatModel) {
+        this.durationFeatModel = durationFeatModel;
     }
-   
+
+    public DurationFeat() {
+    }
+    
     @Override
     public String getDescription() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

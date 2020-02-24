@@ -14,20 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.Heroes.lib;
+package com.Heroes.lib.feat;
 
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
-import com.Heroes.lib.model.BodyLocationFeatModel;
+import com.Heroes.lib.model.DistanceFeatModel;
 
 /**
  *
  * @author lele
  */
-public class BodyLocationFeat implements IFeatAttribute{
-    private BodyLocationFeatModel bodyLocationFeatModel;
+public class DistanceFeat implements IFeatAttribute {
+    private DistanceFeatModel combatFeatModel;
 
-    public BodyLocationFeat(BodyLocationFeatModel bodyLocationFeatModel) {
-        this.bodyLocationFeatModel = bodyLocationFeatModel;
+    public DistanceFeat(DistanceFeatModel combatFeatModel) {
+        this.combatFeatModel = combatFeatModel;
+    }
+
+    public DistanceFeat() {
     }
     
     @Override

@@ -14,23 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.Heroes.lib;
+package com.Heroes.lib.feat;
 
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
-import com.Heroes.lib.model.TargetFeatModel;
+import com.Heroes.lib.model.AttackFeatModel;
 
 /**
  *
  * @author lele
  */
-public class TargetFeat implements IFeatAttribute {
+public class AttackFeat implements IFeatAttribute{
+    private AttackFeatModel attackFeatModel;
 
-    private TargetFeatModel targetFeatModel;
-
-    public TargetFeat(TargetFeatModel targetFeatModel) {
-        this.targetFeatModel = targetFeatModel;
+    public AttackFeat(AttackFeatModel attackFeatModel) {
+        this.attackFeatModel = attackFeatModel;
     }
-    
+
+    public AttackFeat() {
+    }
+        
     @Override
     public String getDescription() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

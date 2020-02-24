@@ -14,20 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.Heroes.lib;
+package com.Heroes.lib.feat;
 
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
-import com.Heroes.lib.model.PotentialBonusFeatModel;
+import com.Heroes.lib.model.EditorFeatModel;
 
 /**
  *
  * @author lele
  */
-public class PotentialBonusFeat implements IFeatAttribute{
-    private PotentialBonusFeatModel potentialBonusFeatModel;
+public class EditorFeat implements IFeatAttribute{
+    EditorFeatModel editorFeatModel;
+    
+    public EditorFeat() {
+    }    
 
-    public PotentialBonusFeat(PotentialBonusFeatModel potentialBonusFeatModel) {
-        this.potentialBonusFeatModel = potentialBonusFeatModel;
+    public EditorFeat(EditorFeatModel editorFeatModel) {
+        this.editorFeatModel = editorFeatModel;
     }
     
     @Override

@@ -3,20 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.Heroes.lib;
+package com.Heroes.lib.feat;
 
-import com.Heroes.lib.model.AreaFeatModel;
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
+import unstable.movement.MovementFeatModel;
+
 
 /**
- *
+ * 
  * @author lele
  */
-public class AreaFeat implements IFeatAttribute{
-    private AreaFeatModel areaFeatModel;
+public class MovementFeat implements IFeatAttribute {
+    private MovementFeatModel movementFeatModel;
 
-    public AreaFeat(AreaFeatModel areaFeatModel) {
-        this.areaFeatModel = areaFeatModel;
+    public MovementFeat(MovementFeatModel movementFeatModel) {
+        this.movementFeatModel = movementFeatModel;
+    }
+
+    public MovementFeat() {
     }
 
     @Override
@@ -32,6 +36,6 @@ public class AreaFeat implements IFeatAttribute{
     @Override
     public String getName() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
-    
+    }
+
 }

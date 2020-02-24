@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 guybrush
+ * Copyright (C) 2020 lele
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,50 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package unstable.movement;
+package com.Heroes.lib.model;
 
 /**
  *
- * @author guybrush
+ * @author lele
  */
-public class MovementFeatModel {
-    private boolean isFollow;
-    private int multiplier;
+public class EditorFeatModel {
     private int value;
-    
-    /**
-     * Get Follow
-     * @return 
-     */
-    public boolean isFollow() {
-        return isFollow;
+
+    public EditorFeatModel() {
     }
 
-    /**
-     * Set Follow
-     * @param follow 
-     */
-    public void setFollow(boolean follow) {
-        this.isFollow = follow;
+    public EditorFeatModel(int value) {
+        this.value = value;
     }
 
-    /**
-     * Get Multiplier
-     * @return 
-     */
-    public int getMultiplier() {
-        return multiplier;
-    }
-
-    /**
-     * Set Multiplier
-     * @param multiplier 
-     */
-    public void setMultiplier(int multiplier) {
-        this.multiplier = multiplier;
-    }
-
-    /**
+    /** 
      * Get Value
      * @return 
      */
@@ -73,4 +46,6 @@ public class MovementFeatModel {
         this.value = value;
     }
     
+    
+
 }

@@ -47,14 +47,14 @@ DurationFeat --|> IFeatAttribute
 DurationFeat *-- DurationFeatModel
 
 class TargetFeatModel {
-        + getArea(): AreaModel
-        + getDistance(): DistanceModel
+        + getArea(): AreaFeatModel
+        + getDistance(): DistanceFeatModel
 
-        + setArea(value: AreaModel): void        
-        + setDistance(value: DistanceModel): void
+        + setArea(value: AreaFeatModel): void        
+        + setDistance(value: DistanceFeatModel): void
 }
-TargetFeatModel *-- "1" DistanceModel
-TargetFeatModel *-- "0..1" AreaModel
+TargetFeatModel *-- "1" DistanceFeatModel
+TargetFeatModel *-- "0..1" AreaFeatModel
 
 class TargetFeat {
         TargetFeat(model: TargetFeatModel)
@@ -68,7 +68,7 @@ enum DistanceTypeENUM {
         SENSORY
         LIMITLESS
 }
-class DistanceModel  {
+class DistanceFeatModel  {
         + getDistanceMultiplier(): int
         + getDistanceType(): DistanceTypeENUM
         + getDistanceValue(): int
@@ -79,13 +79,13 @@ class DistanceModel  {
         + setDistanceValue(value: int): void
         + setNumberOfTarget(value: int): void
 }
-DistanceModel --> DistanceTypeENUM
+DistanceFeatModel --> DistanceTypeENUM
 
 enum AreaTypeENUM {
         DEFINED
         SENSORY
 }
-class AreaModel {
+class AreaFeatModel {
         + getAreaMultiplier(): int
         + getAreaType(): AreaTypeENUM
         + getExcludedTarget(): int
@@ -94,7 +94,7 @@ class AreaModel {
         + setAreaType(value: AreaTypeENUM): void
         + setExcludedTarget(value: int): void
 }
-AreaModel --> AreaTypeENUM
+AreaFeatModel --> AreaTypeENUM
 
 
 

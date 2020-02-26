@@ -15,7 +15,8 @@ public class DistanceFeatModel {
     private DistanceTypeENUM distanceTypeENUM;    
     private int distanceMultiplier;
     private int distanceValue;
-
+    private int numberOfTarget;
+    
     public DistanceFeatModel() {
     }
 
@@ -73,5 +74,20 @@ public class DistanceFeatModel {
         this.distanceValue = distanceValue;
     }
     
+    /**
+     * Get Number Of Target
+     * @return 
+     */
+    public int getNumberOfTarget() {
+        return numberOfTarget;
+    }
+    
+    /**
+     * Set Number Of Target
+     * @param numberOfTarget 
+     */
+    public void setNumberOfTarget(int numberOfTarget) {
+        this.numberOfTarget = numberOfTarget;
+    }    
     
 }

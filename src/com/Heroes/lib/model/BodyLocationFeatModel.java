@@ -6,35 +6,45 @@
 package com.Heroes.lib.model;
 
 import com.Heroes.lib.enumClass.BodyLocationENUM;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
  * @author lele
  */
 public class BodyLocationFeatModel{
-    private BodyLocationENUM bodyLocation;
+    List<BodyLocationENUM> bodyLocationENUM = new ArrayList<BodyLocationENUM>();
 
-    public BodyLocationFeatModel() {
+    public BodyLocationFeatModel(List<BodyLocationENUM> bodyLocationENUM) {
+        this.bodyLocationENUM = bodyLocationENUM;
     }
-
-    public BodyLocationFeatModel(BodyLocationENUM bodyLocation) {
-        this.bodyLocation = bodyLocation;
+    
+    public BodyLocationFeatModel() {
     }
 
     /**
      * Get Body Location
      * @return 
      */
-    public BodyLocationENUM getBodyLocation() {
-        return bodyLocation;
+    public List<BodyLocationENUM> getBodyLocationENUM() {
+        return bodyLocationENUM;
     }
 
     /**
      * Set Body Location
-     * @param bodyLocation 
+     * @param bodyLocationENUM 
      */
-    public void setBodyLocation(BodyLocationENUM bodyLocation) {
-        this.bodyLocation = bodyLocation;
-    }  
-    
+    public void setBodyLocationENUM(List<BodyLocationENUM> bodyLocationENUM) {
+        this.bodyLocationENUM = bodyLocationENUM;
+    }
+
+    /**
+     * add Body Location
+     * @param bodyLocationENUM 
+     */
+    public void addBodyLocationENUM(BodyLocationENUM bodyLocationENUM) {
+        this.bodyLocationENUM.add(bodyLocationENUM);
+    }
+
 }

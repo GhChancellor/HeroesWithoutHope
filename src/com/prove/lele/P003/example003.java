@@ -19,14 +19,17 @@ package com.prove.lele.P003;
 import com.Heroes.lib.core.HeroicFeat;
 import com.Heroes.lib.enumClass.AreaTypeENUM;
 import com.Heroes.lib.enumClass.BodyLocationENUM;
+import com.Heroes.lib.enumClass.CharacterFeatENUM;
 import com.Heroes.lib.enumClass.DistanceTypeENUM;
 import com.Heroes.lib.enumClass.DurationENUM;
 import com.Heroes.lib.feat.BodyLocationFeat;
+import com.Heroes.lib.feat.CharacterBonusFeat;
 import com.Heroes.lib.feat.DurationFeat;
 import com.Heroes.lib.feat.TargetFeat;
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
 import com.Heroes.lib.model.AreaFeatModel;
 import com.Heroes.lib.model.BodyLocationFeatModel;
+import com.Heroes.lib.model.BonusFeatModel;
 import com.Heroes.lib.model.DistanceFeatModel;
 import com.Heroes.lib.model.DurationFeatModel;
 import com.Heroes.lib.model.TargetFeatModel;
@@ -131,4 +134,25 @@ public class example003 {
     private IFeatAttribute getDuration() {
         return durationFeat;
     }
+    
+    /* faccio fatica con i parametri input, modfica lo pseudo codice */
+    private void getBonus(boolean isBonus, CharacterFeatENUM characterFeat){
+        boolean DBG_UNKNOW_VARIABLE = true;
+        CharacterFeatENUM characterFeat_;
+        
+        if (isBonus){
+            BonusFeatModel bonusFeatModel = new BonusFeatModel();
+            List<CharacterBonusFeat> characterBonusFeats = new ArrayList<CharacterBonusFeat>();
+            
+            // L'utente deve selezionare quali caratteristiche riceveranno il bonus
+            
+            while (DBG_UNKNOW_VARIABLE) {                
+                CharacterBonusFeat characterFeatBonus = new CharacterBonusFeat ();
+                characterFeat_ = characterFeat;
+            }
+        }
+        
+    }
+    
+    
 }

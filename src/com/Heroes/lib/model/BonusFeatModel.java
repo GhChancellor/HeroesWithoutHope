@@ -16,6 +16,9 @@ public class BonusFeatModel {
         this.value = value;
     }
 
+    public BonusFeatModel() {
+    }
+        
     /**
      * Get Value
      * @return 

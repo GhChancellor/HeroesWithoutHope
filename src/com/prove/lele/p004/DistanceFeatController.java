@@ -14,28 +14,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.prove.lele.P003;
+package com.prove.lele.p004;
 
 import com.Heroes.lib.enumClass.DistanceTypeENUM;
-import com.Heroes.lib.interfaceClass.IFeatAttribute;
 import com.Heroes.lib.model.DistanceFeatModel;
 
 /**
  *
  * @author lele
  */
-public class DistanceFeat implements IFeatAttribute {
+public class DistanceFeatController {
     private DistanceFeatModel distanceFeatModel;
 
-    /**
-     * UNUSED
-     * @param distanceFeatModel 
-     */
-    public DistanceFeat(DistanceFeatModel distanceFeatModel) {
+    public DistanceFeatController(DistanceFeatModel distanceFeatModel) {
         this.distanceFeatModel = distanceFeatModel;
     }
 
-    public DistanceFeat(int multiplier, int meter, 
+    public DistanceFeatController(int multiplier, int meter, 
             int numberOfTarget, DistanceTypeENUM distanceTypeENUM) {
         
         distanceFeatModel = new DistanceFeatModel();
@@ -45,27 +40,10 @@ public class DistanceFeat implements IFeatAttribute {
             distanceFeatModel.setDistanceValue(meter);
             distanceFeatModel.setDistanceMultiplier(multiplier);
         }
-        distanceFeatModel.setNumberOfTarget(numberOfTarget);
-       
+        distanceFeatModel.setNumberOfTarget(numberOfTarget);        
     }
     
     public DistanceFeatModel getDistanceFeatModel(){
         return distanceFeatModel;
     }
-    
-    @Override
-    public String getDescription() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public int getMagnitude() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public String getName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

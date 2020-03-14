@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.prove.lele.P003;
+package com.prove.lele.p004;
 
 import com.Heroes.lib.enumClass.DistanceTypeENUM;
 import com.Heroes.lib.interfaceClass.IFeatAttribute;
@@ -25,32 +25,23 @@ import com.Heroes.lib.model.DistanceFeatModel;
  * @author lele
  */
 public class DistanceFeat implements IFeatAttribute {
-    private DistanceFeatModel distanceFeatModel;
-
+    private DistanceFeatController distanceFeatController;
+    
     /**
      * UNUSED
      * @param distanceFeatModel 
      */
-    public DistanceFeat(DistanceFeatModel distanceFeatModel) {
-        this.distanceFeatModel = distanceFeatModel;
-    }
-
     public DistanceFeat(int multiplier, int meter, 
             int numberOfTarget, DistanceTypeENUM distanceTypeENUM) {
-        
-        distanceFeatModel = new DistanceFeatModel();
-        distanceFeatModel.setDistanceTypeENUM(distanceTypeENUM);
-        
-        if (distanceTypeENUM == distanceTypeENUM.DEFINED){
-            distanceFeatModel.setDistanceValue(meter);
-            distanceFeatModel.setDistanceMultiplier(multiplier);
-        }
-        distanceFeatModel.setNumberOfTarget(numberOfTarget);
-       
+        distanceFeatController = new DistanceFeatController(
+            multiplier, meter, numberOfTarget, distanceTypeENUM);
+    }
+
+    public DistanceFeatModel getDistanceFeatModel(){
+        return distanceFeatController.getDistanceFeatModel();
     }
     
-    public DistanceFeatModel getDistanceFeatModel(){
-        return distanceFeatModel;
+    public DistanceFeat() {
     }
     
     @Override
